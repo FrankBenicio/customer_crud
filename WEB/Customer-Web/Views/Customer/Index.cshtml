@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Customer_Web.Models.Customer>
+
+@{
+    ViewData["Title"] = "Listas";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Novo cliente</a>
+        </p>
+    </div>
+    <div class="col-md-12 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Pesquisar</h5>
+                <form class="row" asp-action="Index" method="post">
+                    <div class="col-md-6">
+                        <input class="form-control" placeholder="Nome" name="Name" />
+                    </div>
+                    <div class="col-md-4">
+                        <input class="form-control" placeholder="CPF" name="Cpf" />
+                    </div>
+                    <div class="col-md-2 d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-block">Consultar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title"> Clientes</h5>
+                <div class="table-responsive">
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Cpf)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Gender)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.State)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.City)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.Any())
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Cpf)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Gender)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.State)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.City)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Editar", "Edit", new { id=item.Id  }, htmlAttributes: new { @class="btn btn-outline-warning btn-sm"}) |
+                                            @Html.ActionLink("Detalhes", "Details", new {  id=item.Id }, htmlAttributes: new { @class="btn btn-outline-secondary btn-sm"}) |
+                                            @Html.ActionLink("Deletar", "Delete", new {  id=item.Id }, htmlAttributes: new { @class="btn btn-outline-danger btn-sm"})
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                            <tr>
+                                <td colspan="7">Nenhum resultado.</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

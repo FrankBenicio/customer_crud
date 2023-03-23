@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  customer-api:
+    image: ${DOCKER_REGISTRY-}customerapi
+    build:
+      context: .
+      dockerfile: API/Customer-Api/Dockerfile
+    ports:
+      - "8090:80"
+      
+  customer-web:
+    image: ${DOCKER_REGISTRY-}customerweb
+    build:
+      context: .
+      dockerfile: WEB/Customer-Web/Dockerfile
+    depends_on:
+      - customer-api
+
