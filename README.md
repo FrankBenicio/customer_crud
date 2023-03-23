@@ -38,7 +38,7 @@
 - Interface do projeto.
 
 ## API:
-- Disponibilização das rotas POST, GET e PUT.
+- Disponibilização das rotas POST, GET, PUT e DELETE.
 
 ## Instalação:
 Passo 1: 
